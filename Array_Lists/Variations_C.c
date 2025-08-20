@@ -32,7 +32,12 @@ List deletePos(List L, int position){
 }
 
 List locate(List L, int data){
-
+    for(int i = 0; i < L.count; i++){
+        if(L.elem[i] == data){
+            return i;
+        }
+        return -1;
+    }
 }
 List insertSorted(List L, int data){
 
@@ -51,7 +56,14 @@ int main() {
     L = insertPos(L, 10, 0);
     L = insertPos(L, 20, 1);
     L = insertPos(L, 30, 2);
+    L = insertPos(L, 40, 3);
+    L = insertPos(L, 50, 4);
+    L = deletePos(L, 2);
+    int position = locate(L, 20)
     display(L);
+
+    printf("Data is at Position %d\n", position);
+
     return 0;
 }
 
