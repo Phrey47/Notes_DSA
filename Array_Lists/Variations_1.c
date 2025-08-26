@@ -31,19 +31,36 @@ List deletePos(List L, int position){
     return L;
 }
 
-int locate(List L, int data){
-    for(int i = 0; i < L.count; i++){
-        if(L.elem[i] == data){
+int locate(List L, int data) {
+    for (int i = 0; i < L.count; i++) {
+        if (L.elem[i] == data) {
             return i;
         }
     }
     return -1;
 }
-List insertSorted(List L, int data){
 
+List insertSorted(List L, int data) {
+    // if (L.count == MAX) {
+    //     printf("Error: List is full!\n");
+    //     return L;
+    // }
+
+    int pos = 0;
+    while (pos < L.count && L.elem[pos] < data) {
+        pos++;
+    }
+    L = insertPos(L, data, pos);
+    return L;
 }
 
 void display(List L) {
+    if (L.count == 0) {
+        printf("List is empty!\n");
+        return;
+    }
+
+    printf("List: ");
     for (int i = 0; i < L.count; i++) {
         printf("%d ", L.elem[i]);
     }
@@ -53,17 +70,27 @@ void display(List L) {
 int main() {
     List L;
     L = initialize(L);
+
     L = insertPos(L, 10, 0);
     L = insertPos(L, 20, 1);
     L = insertPos(L, 30, 2);
     L = insertPos(L, 40, 3);
     L = insertPos(L, 50, 4);
+    display(L);  
+
     L = deletePos(L, 2);
+    display(L);  
 
-    int position = locate(L, 20);
-    display(L);
+    L = insertSorted(L, 25);
+    //L = insertSorted(L, 5);
+    L = insertSorted(L, 35);
+    display(L);  
 
-    printf("Data is at Position %d\n", position);
+    int pos = locate(L, 25);
+    if (pos != -1)
+        printf("Element 25 found at position %d\n", pos);
+    else
+        printf("Element 25 not found!\n");
 
     return 0;
 }
