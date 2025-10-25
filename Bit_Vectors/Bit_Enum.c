@@ -4,47 +4,6 @@
 typedef enum{ FALSE, TRUE } Boolean;
 typedef Boolean Set[SIZE];
 
-void initSet(Set s);
-Boolean isMember(Set s, int index);   
-void insertSet(Set s, int index);
-void AssignSet(Set A, Set B);
-int minSet(Set s);
-int maxSet(Set s);
-int equalSet(Set A, Set B);
-int findSet(Set s, int index);
-void deleteSet(Set s, int index);    
-void SetUnion(Set A, Set B, Set C);
-void SetIntersection(Set A, Set B, Set C);
-void SetDifference(Set A, Set B, Set C);
-void display(Set s);   
-
-int main(){
-    Set A, B;
-
-    initSet(A);
-    initSet(B);
-
-    insertSet(A, 3);
-    insertSet(A, 1);
-    insertSet(A, 7);
-
-    insertSet(B, 9);
-    insertSet(B, 3);
-    insertSet(B, 1);
-
-    display(A);
-    display(B);
-
-    return 0;
-}
-
-void initSet(Set s){
-    int i;
-    for(i = 0;i < SIZE;i++){
-        s[i] = FALSE;
-    }
-}
-
 Boolean isMember(Set s, int index){
     if(index >= 0 && index < SIZE){
         return s[index];
@@ -143,4 +102,31 @@ void display(Set s) {
         }
     }
     printf("}\n");
+}  
+
+int main(){
+    Set A, B;
+
+    initSet(A);
+    initSet(B);
+
+    insertSet(A, 3);
+    insertSet(A, 1);
+    insertSet(A, 7);
+
+    insertSet(B, 9);
+    insertSet(B, 3);
+    insertSet(B, 1);
+
+    display(A);
+    display(B);
+
+    return 0;
+}
+
+void initSet(Set s){
+    int i;
+    for(i = 0;i < SIZE;i++){
+        s[i] = FALSE;
+    }
 }
