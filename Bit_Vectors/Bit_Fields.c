@@ -23,7 +23,8 @@ void delete(Set *set, int element){
 }
 
 bool find(Set set, int element){
-    if(element >= 0 && element < 8) return (set.field & (1 << element)) != 0;
+    if(element >= 0 && element < 8) 
+        return (set.field & (1 << element)) != 0;
     return false;
 }
 
@@ -82,10 +83,12 @@ int main(){
     printf("A ∪ B = ");
     display(C);
     C = SetIntersection(A, B);
-    printf("A - B = ");
+    printf("A ∩ B = ");
     display(C);
     C = SetDifference(A, B);
-    
+    printf("A - B = ");
     display(C);
+
+    return 0;
 }
 

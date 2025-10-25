@@ -11,42 +11,49 @@ Boolean isMember(Set s, int index){
     return FALSE;
 }
 
+void initSet(Set s){
+
+    for(int i = 0;i < SIZE;i++){
+        s[i] = FALSE;
+    }
+}
+
 void insertSet(Set s, int index){
     if(index >= 0 && index < SIZE){
         s[index] = TRUE;
     }
 }
-
+// not sure if necessary
 void AssignSet(Set A, Set B){
-    int i;
-    for(i = 0;i < SIZE;i++){
+    
+    for(int i = 0;i < SIZE;i++){
         A[i] = B[i];
     }
 }
-
+// not sure if necessary
 int minSet(Set s){
-    int i;
-    for(i = 0;i < SIZE;i++){
+    
+    for(int i = 0;i < SIZE;i++){
         if(s[i] == TRUE){
             return i;
         }
     }
     return -1;
 }
-
+// not sure if necessary
 int maxSet(Set s){
-    int i;
-    for(i = SIZE - 1;i >= 0;i--){
+    
+    for(int i = SIZE - 1;i >= 0;i--){
         if(s[i] == TRUE){
             return i;
         }
     }
     return -1;
 }
-
+// not sure if necessary
 int equalSet(Set A, Set B){
-    int i;
-    for(i = 0;i < SIZE;i++){
+    
+    for(int i = 0;i < SIZE;i++){
         if(A[i] != B[i]){
             return 0;
         }
@@ -68,31 +75,31 @@ void deleteSet(Set s, int index){
 }
 
 void SetUnion(Set A, Set B, Set C){
-    int i;
-    for(i = 0;i < SIZE;i++){
+    
+    for(int i = 0;i < SIZE;i++){
        C[i] = A[i] || B[i];
     }
 }
 
 void SetIntersection(Set A, Set B, Set C){
-    int i;
-    for(i = 0;i < SIZE;i++){
+    
+    for(int i = 0;i < SIZE;i++){
        C[i] = A[i] && B[i];
     }
 }
 
 void SetDifference(Set A, Set B, Set C){
-    int i;
-    for(i = 0;i < SIZE;i++){
+    
+    for(int i = 0;i < SIZE;i++){
        C[i] = A[i] && !B[i];
     }
 }
 
 void display(Set s) {
-    int i;
+    
     int comma = 1;
     printf("{");
-    for (i = 0; i < SIZE; i++) {
+    for (int i = 0; i < SIZE; i++) {
         if (s[i] == TRUE) {
             if(!comma){
                 printf(", ");
@@ -105,7 +112,7 @@ void display(Set s) {
 }  
 
 int main(){
-    Set A, B;
+    Set A, B, C;
 
     initSet(A);
     initSet(B);
@@ -118,15 +125,21 @@ int main(){
     insertSet(B, 3);
     insertSet(B, 1);
 
+    printf("Set A = ");
     display(A);
+    printf("Set B = ");
     display(B);
+
+    SetUnion(A, B, C);
+    printf("A ∪ B = ");
+    display(C);
+    SetIntersection(A, B, C);
+    printf("A ∩ B = ");
+    display(C);
+    SetDifference(A, B, C);
+    printf("A - B = ");
+    display(C);
 
     return 0;
 }
 
-void initSet(Set s){
-    int i;
-    for(i = 0;i < SIZE;i++){
-        s[i] = FALSE;
-    }
-}
