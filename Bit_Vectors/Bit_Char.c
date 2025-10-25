@@ -21,7 +21,8 @@ void deleteElem(unsigned char *set, int element){
 }
 
 bool find(unsigned char set, int element){
-    if(element >= 0 && element < MAX_BITS) return (set & (1 << element)) != 0;
+    if(element >= 0 && element < MAX_BITS) 
+        return (set & (1 << element)) != 0;
     return false;
 }
 
