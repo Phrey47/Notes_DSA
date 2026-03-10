@@ -2,19 +2,16 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-// Node structure
 typedef struct node {
     int data;
     struct node* next;
 } Node;
 
-// Queue structure
 typedef struct {
     Node* front;
     Node* rear;
 } Queue;
 
-// Function prototypes
 Queue* initialize();
 bool isFull(Queue* q);
 bool isEmpty(Queue* q);
@@ -23,7 +20,6 @@ int dequeue(Queue* q);
 int front(Queue* q);
 void display(Queue* q);
 
-// Initialize queue
 Queue* initialize() {
     Queue* q = (Queue*)malloc(sizeof(Queue));
     q->front = NULL;
@@ -31,17 +27,14 @@ Queue* initialize() {
     return q;
 }
 
-// Check if queue is full (LL queue is never full unless malloc fails)
 bool isFull(Queue* q) {
     return false;
 }
 
-// Check if queue is empty
 bool isEmpty(Queue* q) {
     return (q->front == NULL);
 }
 
-// Enqueue operation
 bool enqueue(Queue* q, int value) {
     Node* newNode = (Node*)malloc(sizeof(Node));
     if (newNode == NULL) {
@@ -61,7 +54,6 @@ bool enqueue(Queue* q, int value) {
     return true;
 }
 
-// Dequeue operation
 int dequeue(Queue* q) {
     if (isEmpty(q)) {
         printf("Queue Underflow! Cannot dequeue.\n");
@@ -78,7 +70,6 @@ int dequeue(Queue* q) {
     return value;
 }
 
-// Get front element
 int front(Queue* q) {
     if (isEmpty(q)) {
         printf("Queue is empty.\n");
@@ -87,7 +78,6 @@ int front(Queue* q) {
     return q->front->data;
 }
 
-// Display the queue
 void display(Queue* q) {
     if (isEmpty(q)) {
         printf("Queue is empty.\n");
@@ -102,7 +92,6 @@ void display(Queue* q) {
     printf("\n");
 }
 
-// Main function to test
 int main() {
     Queue* Q = initialize();
 
